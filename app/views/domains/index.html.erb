@@ -1,0 +1,41 @@
+<h1><%= Domain.model_name.human(:count => :lots) %></h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <td><%= Domain.human_attribute_name("name") %></td>
+      <td><%= Domain.human_attribute_name("type") %></td>
+      <td><%= Domain.human_attribute_name("records") %></td>
+      <td><%= Domain.human_attribute_name("status") %></td>
+      <td>Actions</td>
+    </tr>
+  </thead>
+  <tbody>
+  <%- @domains.each do |domain| %>
+    <tr>
+      <td><%= domain.name %></td>
+      <td><%= domain.type %></td>
+      <td><%= domain.records.count %></td>
+      <td><span class="label label-<%= domain.status_type %>"><%=t domain.status_label %></a></td>
+      <td>
+        <a class="btn btn-mini" href="<%= edit_domain_path(domain) %>"><i class="icon-pencil"></i> Edit</a>
+        <%= button_to "Delete",
+          domain_path(domain),
+          :method => :delete,
+          :class => "btn btn-danger btn-mini",
+          :button_class => "icon-trash icon-white",
+          :confirm => t('.confirm_delete', :domain => domain.name),
+          :confirm_header => t('.confirm_delete_header'),
+          :disable_with => t('simple_form.deleting')
+        %>
+      </td>
+    </tr>
+  <%- end %>
+  </tbody>
+</table>
+
+<%= paginate @domains %>
+
+<div class="form-actions">
+  <a href="<%= new_domain_path %>" class="btn"><i class="icon-plus"></i> <%=t '.new_domain' %></a>
+</div>

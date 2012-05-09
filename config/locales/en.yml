@@ -1,0 +1,68 @@
+en:
+  errors:
+    messages:
+      ip_address: "is not a valid IP address"
+      ipv4_address: "is not a valid IPv4 address"
+      ipv6_address: "is not a valid IPv6 address"
+      domain_name: "is not a valid domain name"
+      host_name: "is not a valid host name"
+
+  activerecord:
+    models:
+      domain:
+        one: "Domain"
+        other: "Domains"
+      record:
+        one: "Record"
+        other: "Records"
+      supermaster:
+        one: "Super Master"
+        other: "Super Masters"
+    attributes:
+      record:
+        name: "Name"
+        type: "Record Type"
+        content: "Content"
+        ttl: "TTL"
+        prio: "Priority"
+
+      domain:
+        name: "Domain name"
+        type: "Replication type"
+        master: "Master server"
+        status: "DNS Status"
+        status_label:
+          okay: "Good"
+          error: "Error"
+
+  views:
+    domains:
+      index:
+        confirm_delete: "Are you sure you want to delete %{domain} and all of its records?"
+        confirm_delete_header: "Deleting Domain"
+        new_domain: "New Domain"
+      edit:
+
+    pagination:
+      previous: "&lt; Previous"
+      next: "Next &gt;"
+      truncate: "..."
+
+  flash:
+    actions:
+      create:
+        notice: "%{resource_name} was successfully created."
+      update:
+        notice: "%{resource_name} was successfully updated."
+      destroy:
+        notice: "%{resource_name} was successfully destroyed."
+        alert: "%{resource_name} could not be destroyed."
+
+  domains:
+    index:
+      confirm_delete: "Are you sure you want to delete %{domain} and all its records?"
+      confirm_delete_header: "Deleting Domain"
+      new_domain: "New Domain"
+    edit:
+      domains: "Domains"
+      records: "Records"

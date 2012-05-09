@@ -1,0 +1,38 @@
+en:
+  simple_form:
+    yes: 'Yes'
+    no: 'No'
+
+    creating: "Creating..."
+    updating: 'Updating...'
+    deleting: 'Deleting...'
+    buttons:
+      or: 'or'
+      cancel: 'Cancel'
+
+    required:
+      text: 'required'
+      mark: '*'
+      # html: '<abbr title="required">*</abbr>'
+    error_notification:
+      default_message: "Some errors were found, please take a look:"
+
+    hints:
+      domain:
+        type_html: "Default is NATIVE. See the <a href=\"http://doc.powerdns.com/replication.html\">PowerDNS documentation</a> for more details."
+
+
+
+
+    # Labels and hints examples
+    # labels:
+    #   password: 'Password'
+    #   user:
+    #     new:
+    #       email: 'E-mail para efetuar o sign in.'
+    #     edit:
+    #       email: 'E-mail.'
+    # hints:
+    #   username: 'User name to sign in.'
+    #   password: 'No special characters, please.'
+

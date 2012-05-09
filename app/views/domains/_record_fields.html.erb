@@ -1,0 +1,11 @@
+<tr class="nested-fields">
+  <td><%= f.input :type, :label => false, :collection => Record::TYPES, :include_blank => false, :input_html => {:class => "input-small"} %></td>
+  <td><%= f.input :name, :label => false %></td>
+  <td><%= f.input :content, :label => false %></td>
+  <td><%= f.input :ttl, :label => false, :input_html => {:class => "input-mini"} %></td>
+  <td><%= f.input :prio, :label => false, :input_html => {:class => "input-mini"}, :disabled => f.object.type != "MX" %></td>
+  <td class="actions">
+    <%= link_to_remove_association "Delete", f, :class => "btn btn-danger btn-mini", :button_class => "icon-trash icon-white" %>
+    <%= f.hidden_field(:id) %>
+  </td>
+</tr>

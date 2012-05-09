@@ -1,0 +1,43 @@
+<%= simple_form_for @domain do |f| %>
+  <fieldset>
+    <legend id="domain_name_punycode"><%= @domain.name %></legend>
+
+    <%= f.input :name, :input_html => {:value => SimpleIDN.to_unicode(@domain.name)} %>
+    <%= f.input :type, :collection => Domain::TYPES, :include_blank => false, :hint => t("simple_form.hints.domain.type_html") %>
+    <%= f.input :master, :disabled => !@domain.slave? %>
+  </fieldset>
+
+  <fieldset>
+    <legend><%= Record.model_name.human(:count => :lots)  %></legend>
+
+    <table id="records" class="table table-striped table-with-actions">
+      <thead>
+        <tr>
+          <th><%= Record.human_attribute_name('type') %></th>
+          <th><%= Record.human_attribute_name('name') %></th>
+          <th><%= Record.human_attribute_name('content') %></th>
+          <th><%= Record.human_attribute_name('ttl') %></th>
+          <th><%= Record.human_attribute_name('prio') %></th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= f.simple_fields_for :records, :wrapper => :table_line do |rec| %>
+          <%= render :partial => 'record_fields', :locals => {:f => rec} %>
+        <% end %>
+      </tbody>
+    </table>
+
+    <div class="table-actions">
+      <%= link_to_add_association "Add New Record", f, :records,
+        :render_options => {:wrapper => :default},
+        :class => "btn btn-info btn-mini",
+        :button_class => "icon-plus icon-white",
+        "data-association-insertion-node" => "#records > tbody",
+        "data-association-insertion-method" => "append"
+      %>
+    </div>
+
+    <%= f.button :wrapped_submit, :cancel => domains_path, :table => true %>
+  </fieldset>
+<% end %>

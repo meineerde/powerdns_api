@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>PowerDNS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <%= stylesheet_link_tag "application", :media => "all" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container-fluid">
+        <a class="brand" href="#">PowerDNS</a>
+        <div class="nav-collapse">
+          <p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span3">
+        <div class="well sidebar-nav">
+          <%= render "layouts/sidebar" %>
+        </div>
+      </div>
+      <div class="span9">
+        <% flash_keys = {:notice => 'success', :alert => 'error'} -%>
+        <% flash.each do |key, value| %>
+          <div class="alert alert-<%= flash_keys[key] || key %>">
+            <a class="close" data-dismiss="alert">×</a>
+            <%= value %>
+          </div>
+        <% end %>
+        <%= yield %>
+      </div>
+    </div>
+
+    <hr>
+
+    <footer>
+      <p>&copy; Holger Just 2012</p>
+    </footer>
+  </div>
+  <%= javascript_include_tag :application %>
+</body>
+</html>
